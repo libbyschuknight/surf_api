@@ -4,7 +4,7 @@
 
 Be able to record places I have surfed.
 
-Record places I want to surf
+Record places I want to Surf
 
 - and then be able to tick off when surfed there
 
@@ -14,38 +14,65 @@ Long term goals
 
 ## Modelling
 
-User
--> has many surfs
--> has many locations through surfs
--> has many boards
+### Surf
 
-- name
-- email
-- profile
-
-Surf
 -> belong to user
+`t.belongs_to :user, null: false, foreign_key: true`
+
+how would you do this in another migration if you had already made the surf and users table?
+
+`rails g migration add_references_to_surfs user:references`
+
 -> belong to location
 -> belong to board
 
-- date time
-- surfed or not / done or not done
-- rating
-- notes
+`rails g resource Surfs date:datetime notes:text surfed:boolean rating:integer`
+
+- ✅ date time
+- ✅ surfed or not / done or not done
+- ✅ rating
+- ✅ notes
   - conditions?
   - photo?
 
+Co Pilot thought it should have:
+- has_many :surf_photos, dependent: :destroy
+- has_many :surf_comments, dependent: :destroy
+- has_many :surf_likes, dependent: :destroy
+- has_many :surf_reports, dependent: :destroy
 
-Board
+
+### User
+
+`rails g resource User name:string email:string profile:text`
+
+-> has many surfs
+-> has many locations through surfs ?????
+-> has many boards
+
+- ✅ name
+- ✅ email
+- ✅ profile
+
+
+### Board
+
+```
+rails g resource Board name:string length:integer volume:integer
+```
+
 -> has many surfs
 -> belongs to user
 
 - name
-- length
-- size (optional)
+- length - this should be in inches!
+- volume (optional)
 
 
-Location (surf spot)
+### Location (surf spot)
+
+`rails g resource Location name:string longitude:float latitude:float private:boolean`
+
 -> has many surfs
 -> has many users through surfs
 
@@ -85,3 +112,8 @@ Data structure for a `Surf`:
 ```bash
 rails generate resource Surfs date:datetime notes:text surfed:boolean rating:integer
 ```
+
+## Todo
+
+- [ ]  create other resources
+- [ ]  create a surf - with associations
