@@ -46,9 +46,9 @@ Co Pilot thought it should have:
 
 `rails g resource User name:string email:string profile:text`
 
--> has many surfs
--> has many locations through surfs ?????
--> has many boards
+-> ✅ has many surfs
+-> ✅ has many locations through surfs ?????
+-> ✅ has many boards
 
 - ✅ name
 - ✅ email
@@ -64,9 +64,9 @@ rails g resource Board name:string length:integer volume:integer
 -> has many surfs
 -> belongs to user
 
-- name
-- length - this should be in inches!
-- volume (optional)
+- ✅ name
+- ✅ length - this should be in inches!
+- ✅ volume (optional)
 
 
 ### Location (surf spot)
@@ -115,5 +115,13 @@ rails generate resource Surfs date:datetime notes:text surfed:boolean rating:int
 
 ## Todo
 
-- [ ]  create other resources
-- [ ]  create a surf - with associations
+- ✅ create other resources
+
+- create a surf
+  - via api - so all the things
+  - with associations
+  - just create user in console??
+
+- auth - devise
+  - separate login screen within the rails api app
+  -
