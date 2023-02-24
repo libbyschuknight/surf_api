@@ -16,15 +16,15 @@ Long term goals
 
 ### Surf
 
--> belong to user
+-> belong to user ✅
 `t.belongs_to :user, null: false, foreign_key: true`
 
 how would you do this in another migration if you had already made the surf and users table?
 
 `rails g migration add_references_to_surfs user:references`
 
--> belong to location
--> belong to board
+-> belong to location ✅
+-> belong to board ✅
 
 `rails g resource Surfs date:datetime notes:text surfed:boolean rating:integer`
 
@@ -61,8 +61,8 @@ Co Pilot thought it should have:
 rails g resource Board name:string length:integer volume:integer
 ```
 
--> has many surfs
--> belongs to user
+-> has many surfs ✅
+-> belongs to user ✅
 
 - ✅ name
 - ✅ length - this should be in inches!
@@ -73,16 +73,51 @@ rails g resource Board name:string length:integer volume:integer
 
 `rails g resource Location name:string longitude:float latitude:float private:boolean`
 
--> has many surfs
--> has many users through surfs
+-> has many surfs ✅
+-> has many users through surfs ✅
 
-- longitude / latitude
-  - postgis
-- name
-- private or not
+- longitude / latitude  ✅
+  - postgis ??
+- name  ✅
+- private or not  ✅
 
   Nice to have
   - weather conditions
+
+
+### Create surf endpoints
+
+- via api - so all the things
+  - ✅ index action
+    - use serilizer ? blueprinter - why / why not?
+    - <https://blog.kiprosh.com/serialization_in_ruby_on_rails_part_three/>
+    - ✅ with associations
+      - return all user information
+      - return all location information
+      - return all board information
+
+  - ✅ create a surf
+    - just create user in console??
+    - ✅ with associations
+      - return all user information
+      - return all location information
+      - return all board information
+
+  - ✅ show a surf
+  - ✅ update a surf
+  - ✅ delete a surf
+
+
+## Todo
+
+- create other model endpoints
+  - location
+  - board
+  - user - but with the whole auth thing/devise stuff
+
+- auth - devise
+  - separate login screen within the rails api app
+  - create users
 
 ## Next
 
@@ -91,6 +126,7 @@ rails g resource Board name:string length:integer volume:integer
   1. basic html / vanilla JS
   2. inbetween - virtual DOM library / vanilla plus libraries
   3. JS frameworks e.g. Vue
+
 
 ---
 
@@ -112,16 +148,3 @@ Data structure for a `Surf`:
 ```bash
 rails generate resource Surfs date:datetime notes:text surfed:boolean rating:integer
 ```
-
-## Todo
-
-- ✅ create other resources
-
-- create a surf
-  - via api - so all the things
-  - with associations
-  - just create user in console??
-
-- auth - devise
-  - separate login screen within the rails api app
-  -
