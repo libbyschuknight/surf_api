@@ -111,9 +111,22 @@ rails g resource Board name:string length:integer volume:integer
 ## Todo
 
 - create other model endpoints
-  - location
-  - board
+  - ✅ location
+    - make unique by name?
+      - db constraint?
+      - model validation
+
+  - ✅ board
+    - make unique by?? name?
+      - db constraint?
+      - model validation
+
   - user - but with the whole auth thing/devise stuff
+    - users controller? or sessions controller?
+
+    - make unique by email?
+    - db constraint?
+      - model validation
 
 - auth - devise
   - separate login screen within the rails api app
@@ -127,8 +140,6 @@ rails g resource Board name:string length:integer volume:integer
   2. inbetween - virtual DOM library / vanilla plus libraries
   3. JS frameworks e.g. Vue
 
-
----
 
 ## Rails Api App
 
@@ -148,3 +159,11 @@ Data structure for a `Surf`:
 ```bash
 rails generate resource Surfs date:datetime notes:text surfed:boolean rating:integer
 ```
+
+## Random Notes / Things to remember
+
+Comments from Nick
+<https://github.com/libbyschuknight/surf_api/commit/4188545e5e13f731c2c65dbeb8897a81abad7ec0#comments>
+
+- just use error messages that you get off the model e.g. `surf.errors.full_messages`, if just using `.save` not `save!`
+- just use inbuilt `to_json` stuff e.g. `render json:`

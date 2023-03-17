@@ -2,27 +2,20 @@ class SurfsController < ApplicationController
   def create
     surf = Surf.new(surf_params)
 
-    if surf.save!
+    if surf.save
       render json: surf, include: [:user, :location, :board]
     else
-      # how to pass error messages through from validations?
-      # like if there is no user
-      # also don't think the below message is actually showing
-      # getting ugly <ActiveRecord::RecordInvalid: Validation failed: User must exist> error with lots of guff
-      render json: { message: 'Surf not created' }
+      render json: { error_messages: surf.errors.full_messages }
     end
   end
 
   def index
-    # what do I want to use to return it in JSON format?
-    # - use serilizer ? blueprinter - why / why not?
-
     surfs = Surf.all
 
     if surfs
       render json: surfs, include: [:user, :location, :board]
     else
-      render json: { message: 'Surfs not found' }
+      render json: { error_messages: "No surfs." }
     end
   end
 
@@ -31,9 +24,10 @@ class SurfsController < ApplicationController
 
     if surf
       render json: surf, include: [:user, :location, :board]
-    else
-      render json: { message: 'Surf not found' }
     end
+
+  rescue ActiveRecord::RecordNotFound
+    render json: { error_messages: "Surf not found." }
   end
 
   def update
@@ -42,7 +36,7 @@ class SurfsController < ApplicationController
     if surf.update(surf_params)
       render json: surf, include: [:user, :location, :board]
     else
-      render json: { message: 'Surf not updated' }
+      render json: { error_messages: surf.errors.full_messages }
     end
   end
 
@@ -52,7 +46,7 @@ class SurfsController < ApplicationController
     if surf.destroy
       render json: { message: 'Surf deleted' }
     else
-      render json: { message: 'Surf not deleted' }
+      render json: { error_messages: surf.errors.full_messages }
     end
   end
 
