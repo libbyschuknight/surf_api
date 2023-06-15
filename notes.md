@@ -108,9 +108,8 @@ rails g resource Board name:string length:integer volume:integer
   - ✅ delete a surf
 
 
-## Todo
 
-- create other model endpoints
+- ✅ create other model endpoints
   - ✅ location
     - make unique by name?
       - db constraint?
@@ -121,12 +120,15 @@ rails g resource Board name:string length:integer volume:integer
       - db constraint?
       - model validation
 
-  - user - but with the whole auth thing/devise stuff
-    - users controller? or sessions controller?
 
-    - make unique by email?
-    - db constraint?
-      - model validation
+## Todo
+
+- user - but with the whole auth thing/devise stuff
+  - users controller? or sessions controller?
+
+  - make unique by email?
+  - db constraint?
+    - model validation
 
 - auth - devise
   - separate login screen within the rails api app
@@ -134,12 +136,14 @@ rails g resource Board name:string length:integer volume:integer
 
 ## Next
 
-- rails Api
+- Rails Api
+  - in progress
+- Auth
+  - devise
 - Frontend
   1. basic html / vanilla JS
   2. inbetween - virtual DOM library / vanilla plus libraries
-  3. JS frameworks e.g. Vue
-
+  3. JS frameworks e.g. Vue / React
 
 ## Rails Api App
 
