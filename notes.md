@@ -140,6 +140,9 @@ rails g resource Board name:string length:integer volume:integer
   - in progress
 - Auth
   - devise
+  - <https://github.com/heartcombo/devise#getting-started>
+  - <https://guides.railsgirls.com/devise>
+
 - Frontend
   1. basic html / vanilla JS
   2. inbetween - virtual DOM library / vanilla plus libraries
